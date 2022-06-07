@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="False"
+             x:Class="Todorin.Views.CategoriesPage"
+             BackgroundColor="{AppThemeBinding Light=#e1f5fe, Dark=#212121}">
+    
+    <NavigationPage.TitleView>
+        <Label Text="ToDo Lists" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Padding="20, 0"
+               TextColor="White" FontAttributes="Bold" FontSize="18" HeightRequest="40"/>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Command="{Binding SettingsCommand}" Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Frame BackgroundColor="{AppThemeBinding Light=#BBDEFB, Dark=#90A4AE}"
+               HasShadow="{AppThemeBinding Light=True, Dark=False}"
+               Margin="0,-5,0, 0" HeightRequest="40">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
+                         Padding="10, 0 , 10, 0">
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Image Source="{AppThemeBinding Light=list_black.png, Dark=list_white.png}"
+                           HeightRequest="10"/>
+                    <Label TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                           Text="All Todo's" VerticalTextAlignment="Center" 
+                           FontAttributes="Bold" FontSize="18" Padding="5, 0, 5, 0" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AllTodos_OnTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                           Text="{Binding TasksCount}" VerticalTextAlignment="Center" 
+                           FontSize="18" Padding="10, 0,0, 0" />
+                    <Image Source="{AppThemeBinding Light=checkmark_circle.png,
+                    Dark=checkmark_circle_white.png}" HeightRequest="15" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,0 ,0">
+            <Label Text="{Binding Message}" HorizontalTextAlignment="Center"
+                   FontSize="15" TextColor="White" 
+                   BackgroundColor="{AppThemeBinding Light=#E91E63, Dark=#880E4F}" 
+                   Padding="0, 0" IsVisible="{Binding IsVisibleError}" />
+        </StackLayout>
+        <ScrollView>
+            <ListView BackgroundColor="{AppThemeBinding Light=#e1f5fe, Dark=#212121}"
+                      ItemsSource="{Binding Categories}" Margin="0,-20,0,0"
+                      HasUnevenRows="True" ItemTapped="ListView_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Clicked="Delete_OnClicked"
+                                          CommandParameter="{Binding Id}" IsDestructive="True"/>
+                                <MenuItem Text="Edit" Clicked="Edit_OnClicked"
+                                          CommandParameter="{Binding Id}" />
+                            </ViewCell.ContextActions>
+                            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#424242}"
+                                   HasShadow="{AppThemeBinding Light=True, Dark=False}"
+                                   Margin="0,-5,0,0" VerticalOptions="Center">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" 
+                                             HorizontalOptions="FillAndExpand" 
+                                             Padding="10, 0 , 10, 0">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Image Source="{AppThemeBinding Light=list_black.png,
+                                        Dark=list_white.png}" HeightRequest="10"/>
+                                        <Label TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                                            Text="{Binding CategoryName}" VerticalTextAlignment="Center"
+                                               FontAttributes="Bold" FontSize="18" Padding="5, 0, 5, 0" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Label TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                                               Text="{Binding TasksCount}" VerticalTextAlignment="Center" 
+                                               FontSize="18" Padding="5, 0,0, 0" />
+                                        <Image Source="{AppThemeBinding Light=checkmark_circle.png,
+                                        Dark=checkmark_circle_white.png}" HeightRequest="15" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Frame BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#607D8B}"
+               HasShadow="{AppThemeBinding Light=True, Dark=False}"
+               Margin="0,5,0,0" 
+               VerticalOptions="Center"
+               CornerRadius="0" HeightRequest="40">
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <Button Text="Add New ToDo's List" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                        Clicked="GoToAddNewCategory_OnClicked" />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>

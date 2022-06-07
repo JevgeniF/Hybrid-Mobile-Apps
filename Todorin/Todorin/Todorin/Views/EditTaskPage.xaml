@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todorin.Views.EditTaskPage"
+             BackgroundColor="{AppThemeBinding Light=#BBDEFB, Dark=#90A4AE}">
+    
+    <StackLayout>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,40,0 ,0">
+            <Label BackgroundColor="{AppThemeBinding Light=#E91E63, Dark=#880E4F}" 
+                   Text="{Binding Message}" HorizontalTextAlignment="Center"
+                   FontSize="15" TextColor="White" Padding="40, 5"
+                   IsVisible="{Binding IsVisibleError}" />
+        </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                     Margin="40,0" Spacing="15">
+            <Entry BackgroundColor="{AppThemeBinding Light=white, Dark=black}"
+                   TextColor="{AppThemeBinding Light=black, Dark=white}"
+                   Text="{Binding Task.TaskName}"
+                   Placeholder="Enter todo name" />
+            <Picker BackgroundColor="{AppThemeBinding Light=#90A4AE, Dark=#37474F}" 
+                    x:Name="CategoryPicker" Title="Select todo list" ItemsSource="{Binding Categories}" 
+                    ItemDisplayBinding="{Binding CategoryName}" 
+                    SelectedItem="{Binding SelectedCategory}"/>
+            <Picker BackgroundColor="{AppThemeBinding Light=#90A4AE, Dark=#37474F}" 
+                    x:Name="PriorityPicker" Title="Select todo priority" ItemsSource="{Binding Priorities}" 
+                    ItemDisplayBinding="{Binding PriorityName}" 
+                    SelectedItem="{Binding SelectedPriority}"/>
+        </StackLayout>
+        <Frame BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#607D8B}"
+               HasShadow="{AppThemeBinding Light=True, Dark=False}" 
+               Margin="0,5,0,0" VerticalOptions="Center"
+               CornerRadius="0" HeightRequest="40">
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <Button Text="Edit ToDo" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                        Command="{Binding EditCommand}" />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

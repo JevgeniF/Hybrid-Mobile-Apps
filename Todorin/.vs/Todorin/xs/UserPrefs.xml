@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{25325691-A118-43CA-BF90-931DCBC4CB9C}|Default">
+  <MonoDevelop.Ide.ItemProperties.Todorin.Droid PreferredExecutionTarget="Android.Pixel_5_API_29" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Todorin" expanded="True">
+            <Node name="Todorin" expanded="True" selected="True">
+              <Node name="Views" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Todorin.ViewModels;assembly=Todorin"
+             x:Class="Todorin.Views.SettingsPage"
+             BackgroundColor="{AppThemeBinding Light=#e1f5fe, Dark=#212121}">
+    <ContentPage.BindingContext>
+        <viewModels:SettingsViewModel />
+    </ContentPage.BindingContext>
+        <StackLayout VerticalOptions="FillAndExpand">
+            
+            <Frame BackgroundColor="{AppThemeBinding Light=#BBDEFB, Dark=#90A4AE}"
+                   HasShadow="{AppThemeBinding Light=True, Dark=False}" 
+                   Margin="0,5,0,0" VerticalOptions="StartAndExpand"
+                   CornerRadius="5" MinimumHeightRequest="70" HeightRequest="200">
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Image Source="userImage.png" MinimumHeightRequest="0" HeightRequest="100"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="20, 0">
+                        <Label 
+                            TextColor="{AppThemeBinding Light=black, Dark=white}"
+                            Text="First name: " Padding="0, 0, 10, 0"/> 
+                        <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                               x:Name="LabelFirstName"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="20, 0">
+                        <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                               Text="Last name: " Padding="0, 0, 10, 0"/> 
+                        <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                               x:Name="LabelLastName"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="20, 0">
+                        <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                               Text="E-mail: " Padding="0, 0, 10, 0"/> 
+                        <Label TextColor="{AppThemeBinding Light=black, Dark=white}"
+                               x:Name="LabelEmail"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Frame BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#2196F3}"
+                       HasShadow="{AppThemeBinding Light=True, Dark=False}" 
+                       Margin="0,-5,0,0" VerticalOptions="Center"
+                       CornerRadius="5" MinimumHeightRequest="20" HeightRequest="40">
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="FillAndExpand" Padding="0, -10, 0, 0">
+                    <Button Text="Light Theme" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                            Command="{Binding LightThemeCommand}" />
+                </StackLayout>
+            </Frame>
+            <Frame BackgroundColor="{AppThemeBinding Light=#607D8B, Dark=#607D8B}"
+                   HasShadow="{AppThemeBinding Light=True, Dark=False}" 
+                   Margin="0,-5,0,0" VerticalOptions="Center"
+                   CornerRadius="5" MinimumHeightRequest="20" HeightRequest="40">
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="FillAndExpand" Padding="0, -10, 0, 0">
+                    <Button Text="Dark Theme" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                            Command="{Binding DarkThemeCommand}" />
+                </StackLayout>
+            </Frame>
+            <Frame BackgroundColor="{AppThemeBinding Light=#E91E63, Dark=#880E4F}"
+                   HasShadow="{AppThemeBinding Light=True, Dark=False}" 
+                   Margin="0,-5,0,0" VerticalOptions="Center"
+                   CornerRadius="5" MinimumHeightRequest="20" HeightRequest="40">
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="FillAndExpand" Padding="0, -10, 0, 0">
+                    <Button Text="Sign Out" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                            Command="{Binding SignOutCommand}" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        </StackLayout>
+</ContentPage>

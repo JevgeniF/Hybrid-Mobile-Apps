@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todorin.Views.TasksPage"
+             BackgroundColor="{AppThemeBinding Light=#e1f5fe, Dark=#212121}">
+
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Category.CategoryName}" VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Start" Padding="0, 0, 20, 0"
+               TextColor="White" FontAttributes="Bold" FontSize="18" HeightRequest="40" />
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+        <ScrollView>
+            <ListView BackgroundColor="{AppThemeBinding Light=#e1f5fe, Dark=#212121}"
+                      ItemsSource="{Binding Tasks}" Margin="0,-20,0,0"
+                      HasUnevenRows="True" ItemTapped="ListView_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Clicked="Delete_OnClicked"
+                                          CommandParameter="{Binding Id}" IsDestructive="True" />
+                                <MenuItem Text="Done" Clicked="Done_OnClicked"
+                                          CommandParameter="{Binding Id}" />
+                            </ViewCell.ContextActions>
+                            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#424242}"
+                                   HasShadow="{AppThemeBinding Light=True, Dark=False}"
+                                   Margin="0,-5,0,0" VerticalOptions="Center"
+                                   HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" 
+                                             HorizontalOptions="FillAndExpand"
+                                             Padding="10, 0 , 10, 0" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <ImageButton Source="{Binding PriorityIcon}" HeightRequest="18"
+                                                     Clicked="Star_OnClicked" CommandParameter="{Binding Id}" />
+                                        <StackLayout Orientation="Vertical" Padding="5, 0, 5, 0"
+                                                     HorizontalOptions="Start">
+                                            <Label TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                                                   Text="{Binding TaskName}"
+                                                   TextDecorations="{Binding TextDecorations}"
+                                                   FontAttributes="Bold" FontSize="18"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="{AppThemeBinding Light=list_black.png,
+                                                Dark=list_white.png}" HeightRequest="7"/>
+                                                <Label TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                                                       Text="{Binding CategoryName}" FontSize="11"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label Text="{Binding NormalizedDate}" 
+                                               TextColor="{AppThemeBinding Light=#880E4F, Dark=#E91E63}"
+                                               FontSize="15" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"
+                                               Padding="0, 0, 5, 0" WidthRequest="90"/>
+                                        <ImageButton Source="{AppThemeBinding Light=bell_black.png,
+                                                Dark=bell_white.png}" HeightRequest="18"
+                                                     Clicked="Alarm_OnClicked" 
+                                                     CommandParameter="{Binding Id}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Frame BackgroundColor="{AppThemeBinding Light=#BBDEFB, Dark=#90A4AE}"
+               HasShadow="{AppThemeBinding Light=True, Dark=False}"
+               Margin="0,0,0,-10" Padding="0, 10, 0, 10" VerticalOptions="Center"
+               CornerRadius="0">
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Button x:Name="SortReset" ImageSource="reset_sort.png" TextColor="White" HorizontalOptions="Center"
+                        WidthRequest="50" HeightRequest="50" Clicked="SortReset_OnClicked"/>
+                <Button x:Name="SortName" ImageSource="name_sort.png" TextColor="White" HorizontalOptions="Center"
+                        WidthRequest="50" HeightRequest="50" Clicked="SortName_OnClicked"/>
+                <Button x:Name="SortImportant" ImageSource="important_sort.png" TextColor="White"
+                        WidthRequest="50" HeightRequest="50" Clicked="SortImportant_OnClicked"/>
+                <Button x:Name="SortNormal" ImageSource="normal_sort.png" TextColor="White"
+                        WidthRequest="50" HeightRequest="50" Clicked="SortNormal_OnClicked"/>
+                <Button x:Name="SortDate" ImageSource="date_sort.png" TextColor="White"
+                        WidthRequest="50" HeightRequest="50" Clicked="SortDate_OnClicked"/>
+            </StackLayout>
+        </Frame>
+        <Frame BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#607D8B}"
+               Margin="0,5,0,0" HasShadow="True" VerticalOptions="Center"
+               CornerRadius="0" HeightRequest="40">
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <Button Text="Add New ToDo" TextColor="White" FontSize="18" BackgroundColor="Transparent"
+                        Clicked="GoToAddNewTask_OnClicked" />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>

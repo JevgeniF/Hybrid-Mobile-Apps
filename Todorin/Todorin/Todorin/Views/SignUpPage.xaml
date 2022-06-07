@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todorin.Views.SignUpPage"
+             xmlns:viewModels="clr-namespace:Todorin.ViewModels;assembly=Todorin"
+             BackgroundColor="{AppThemeBinding Light=#BBDEFB, Dark=#90A4AE}">
+    
+    <ContentPage.BindingContext>
+        <viewModels:SignUpViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,30,0 ,0">
+            <Label Text="{Binding Message}" HorizontalTextAlignment="Center"
+                   FontSize="15" TextColor="White" BackgroundColor="Red" Padding="40, 5"
+                   IsVisible="{Binding IsVisibleError}" />
+            <Image Source="logo.png" Aspect="AspectFit" MinimumHeightRequest="0" HeightRequest="250" />
+        </StackLayout>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                     Margin="40, 0" Spacing="10">
+            <Entry Text="{Binding FirstName}" Placeholder="First Name"
+                   HeightRequest="40" />
+            <Entry Text="{Binding LastName}" Placeholder="Last Name"
+                   HeightRequest="40" />
+            <Entry Text="{Binding Email}" Placeholder="Email"
+                   HeightRequest="40" />
+            <Entry Text="{Binding Password}" Placeholder="Password"
+                   IsPassword="True" HeightRequest="40" />
+        </StackLayout>
+        <StackLayout HorizontalOptions="Center" Margin="40,10">
+            <Label TextColor = "{AppThemeBinding Light=#448AFF, Dark=#616161}" 
+                   Text="Already registered?" FontSize="15" />
+            <Button Text="SignIn" FontSize="15" FontAttributes="Bold"
+                    TextColor = "{AppThemeBinding Light=#0D47A1, Dark=#37474F}"
+                    BackgroundColor="Transparent" Clicked="NavigationButton_OnClicked" />
+        </StackLayout>
+        <Frame Margin="0,5,0,0" HasShadow="True" VerticalOptions="Center"
+               CornerRadius="0" HeightRequest="40" 
+               BackgroundColor = "{AppThemeBinding Light=#2196F3, Dark=#607D8B}">
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <Button Command="{Binding SignUpCommand}" Text="Sign Up" TextColor="White"
+                        FontSize="18" BackgroundColor="Transparent"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

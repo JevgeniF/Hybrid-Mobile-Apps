@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "23vb/ZEegby2tsiByus579N377wL0sPCmy2onBmFJ4pVmHSqBRCC0VRvHkXKoA1f7FNferLGlHGyf+g3tLstwQ==",
+  "success": true,
+  "projectFilePath": "/Users/jevgeni/OneDrive/Projects/hybridMobileApps/icd0018-2021f/Todorin/Todorin/Todorin/Todorin.csproj",
+  "expectedPackageFiles": [
+    "/Users/jevgeni/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/jevgeni/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/jevgeni/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/jevgeni/.nuget/packages/xam.plugins.settings/3.1.1/xam.plugins.settings.3.1.1.nupkg.sha512",
+    "/Users/jevgeni/.nuget/packages/xamarin.forms/5.0.0.2012/xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}
